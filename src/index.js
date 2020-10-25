@@ -12,7 +12,7 @@ module.exports = function toReadable (number) {
     return (number%10 != 0) ? `${dic.decades[arrDigits[0]-2]} ${dic.digits[arrDigits[1]]}` : `${dic.decades[arrDigits[0]-2]}`
   }
   let _toReadable99 = (number, arr) => {
-    return (number%10 != 0) ? `${dic.decades[arrDigits[0]-2]} ${dic.digits[arr[1]]}` : `${dic.decades[arr[0]-2]}`
+    return (number%10 != 0) ? `${dic.decades[arr[0]-2]} ${dic.digits[arr[1]]}` : `${dic.decades[arr[0]-2]}`
   }
   
 
