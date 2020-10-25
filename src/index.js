@@ -11,6 +11,9 @@ module.exports = function toReadable (number) {
   let toReadable99 = (number) => {
     return (number%10 != 0) ? `${dic.decades[arrDigits[0]-2]} ${dic.digits[arrDigits[1]]}` : `${dic.decades[arrDigits[0]-2]}`
   }
+  let _toReadable99 = (number, arr) => {
+    return (number%10 != 0) ? `${dic.decades[arrDigits[0]-2]} ${dic.digits[arr[1]]}` : `${dic.decades[arr[0]-2]}`
+  }
   
 
   if (number < 20) return toReadable20(number)
@@ -21,8 +24,9 @@ module.exports = function toReadable (number) {
         return `${dic.digits[arrDigits[0]]} hundred ${toReadable20((number - (arrDigits[0]*100)))}`
     }
     if ((number - (arrDigits[0]*100)) >= 20) {
-        arrDigits = (number - (arrDigits[0]*100)).toString().split('').map(Number)
-        return `${dic.digits[arrDigits[0]]} hundred ${toReadable99((number - (arrDigits[0]*100)))}`
+        let _number = number - (arrDigits[0]*100)
+        let _arrDigits = _number.toString().split('').map(Number)
+        return `${dic.digits[arrDigits[0]]} hundred ${_toReadable99(_number, _arrDigits)}`
     }
   }
   
